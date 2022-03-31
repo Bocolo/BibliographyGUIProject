@@ -1,10 +1,7 @@
 package factories;
 
 import publications.BibItem;
-import strategies.ArticleGUIInputStrategy;
-import strategies.BookGUIInputStrategy;
 import strategies.ItemInputStrategy;
-import strategies.TechReportGUIInputStrategy;
 
 /**
  * this is a publication factory that implements BibItemFactory interface 
@@ -13,21 +10,21 @@ import strategies.TechReportGUIInputStrategy;
  *
  */
 public class PublicationFactory implements BibItemFactory {
-	private BookGUIInputStrategy bookGUIInputStrategy;
-	private ArticleGUIInputStrategy articleGUIInputStrategy;
-	private TechReportGUIInputStrategy techReportGUIInputStrategy;
+	private ItemInputStrategy bookInputStrategy;
+	private ItemInputStrategy articleInputStrategy;
+	private ItemInputStrategy techReportInputStrategy;
 
 	/**
 	 * constructor that sets the field strategies
-	 * @param bookGUIInputStrategy a BookGUIInputStrategy object
-	 * @param articleGUIInputStrategy a ArticleGUIInputStrategy object
-	 * @param techReportGUIInputStrategy a TechReportGUIInputStrategy object
+	 * @param bookGUIInputStrategy a ItemInputStrategy object
+	 * @param articleGUIInputStrategy a ItemInputStrategy object
+	 * @param techReportGUIInputStrategy a ItemInputStrategy object
 	 */
-	public PublicationFactory(BookGUIInputStrategy bookGUIInputStrategy,
-			ArticleGUIInputStrategy articleGUIInputStrategy, TechReportGUIInputStrategy techReportGUIInputStrategy) {
-		this.bookGUIInputStrategy = bookGUIInputStrategy;
-		this.articleGUIInputStrategy = articleGUIInputStrategy;
-		this.techReportGUIInputStrategy = techReportGUIInputStrategy;
+	public PublicationFactory(ItemInputStrategy bookInputStrategy,
+			ItemInputStrategy articleInputStrategy, ItemInputStrategy techReportInputStrategy) {
+		this.bookInputStrategy = bookInputStrategy;
+		this.articleInputStrategy = articleInputStrategy;
+		this.techReportInputStrategy = techReportInputStrategy;
 	}
 
 	/**
@@ -43,20 +40,20 @@ public class PublicationFactory implements BibItemFactory {
 		BibItem returnedBibItem = null;
 		switch (bibItem) {
 		case "Book":
-			returnedBibItem = createBibItemUsingStrategy(bookGUIInputStrategy);
+			returnedBibItem = createBibItemUsingStrategy(bookInputStrategy);
 			break;
 		case "Article":
-			returnedBibItem = createBibItemUsingStrategy(articleGUIInputStrategy);
+			returnedBibItem = createBibItemUsingStrategy(articleInputStrategy);
 			break;
 		case "Tech Report":
-			returnedBibItem = createBibItemUsingStrategy(techReportGUIInputStrategy);
+			returnedBibItem = createBibItemUsingStrategy(techReportInputStrategy);
 			break;
 		}
 		return returnedBibItem;
 	}
 
 	/**
-	 * takes in an implentation of the ItemInputStrategy interface and
+	 * takes in an implementation of the ItemInputStrategy interface and
 	 * calls its createBibItemFromInput method, return its BibItem value
 	 * @param inputGUIStrategy the strategy to be used to call createBibItemFromInput()
 	 * @return a BibItem gotten from the strategies createBibItemFromInput method

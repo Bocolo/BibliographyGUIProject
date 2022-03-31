@@ -35,7 +35,7 @@ import strategies.TechReportGUIInputStrategy;
  * @author Bronagh
  *
  */
-public class ConsoleBibManager {
+public class GuiBibManager {
 	private JFrame mainFrame;
 	private JLabel headerLabel;
 	private JLabel statusLabel;
@@ -49,14 +49,14 @@ public class ConsoleBibManager {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		new ConsoleBibManager();
+		new GuiBibManager();
 	}
 
 	/**
-	 * ConsoleBibManager Constructor - calls the main gui and sets the publication
+	 * GuiBibManager Constructor - calls the main gui and sets the publication
 	 * factory and bibliography
 	 */
-	public ConsoleBibManager() {
+	public GuiBibManager() {
 		mainGUI();
 		publicationFactory = new PublicationFactory(new BookGUIInputStrategy(), new ArticleGUIInputStrategy(),
 				new TechReportGUIInputStrategy());
