@@ -7,21 +7,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import publications.Article;
-/**
- * class to display a form to create a tech report citation 
- * @author Bronagh
- *
- */
+
 public class ArticleForm {
-	/**
-	 * this is a recursive method. It creates and displays a JPanel with input fields
-	 * for a Article. If ok is selected, inputs are validated. If any input errors exist,
-	 * an ErrorMsg is displayed, when acknowledge, the method calls itself again
-	 * 
-	 * If no errorMsgs are displayed a new Article is created with the form inputs as params.
-	 * The article is returned.
-	 * If cancel is select, null is returned
-	 */
+	
 	public Article addArticle() {
 		JTextField author = new JTextField(5);
 		JTextField title = new JTextField(5);

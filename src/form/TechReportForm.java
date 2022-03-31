@@ -7,21 +7,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import publications.TechReport;
-/**
- * class to display a form to create a tech report citation 
- * @author Bronagh
- *
- */
+
 public class TechReportForm {
-	/**
-	 * this is a recursive method. It creates and displays a JPanel with input fields
-	 * for a TechReport. If ok is selected, inputs are validated. If any input errors exist,
-	 * an ErrorMsg is displayed, when acknowledge, the method calls itself again
-	 * 
-	 * If no errorMsgs are displayed a new TechReport is created with the form inputs as params.
-	 * The techReport is returned.
-	 * If cancel is select, null is returned
-	 */
+	
 	public TechReport showTechReportForm() {
 		JTextField author = new JTextField(5);
 		JTextField title = new JTextField(5);

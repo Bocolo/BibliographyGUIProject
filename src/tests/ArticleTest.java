@@ -10,15 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import publications.Article;
 
-/**
- * This is a test class for testing a valid doi input Doi must begin with
- * "https://doi.org/" then be followed by 2 digits then a period (.) then be
- * followed by 4 digits then be followed by a / then be followed by non null
- * e.g. "https://doi.org/10.1007/3-540-47910-4_21"
- * 
- * @author Bronagh
- *
- */
+
 class ArticleTest {
 	Article article;
 

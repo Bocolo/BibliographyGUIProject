@@ -28,13 +28,7 @@ import strategies.ArticleGUIInputStrategy;
 import strategies.BookGUIInputStrategy;
 import strategies.TechReportGUIInputStrategy;
 
-/**
- * This is the class that controls the main gui elements of the program and
- * contains the main method
- * 
- * @author Bronagh
- *
- */
+
 public class GuiBibManager {
 	private JFrame mainFrame;
 	private JLabel headerLabel;
@@ -43,19 +37,12 @@ public class GuiBibManager {
 	private PublicationFactory publicationFactory;
 	private Bibliography bibliography;
 
-	/**
-	 * The main method that runs the program
-	 * 
-	 * @param args
-	 */
+	
 	public static void main(String[] args) {
 		new GuiBibManager();
 	}
 
-	/**
-	 * GuiBibManager Constructor - calls the main gui and sets the publication
-	 * factory and bibliography
-	 */
+	
 	public GuiBibManager() {
 		mainGUI();
 		publicationFactory = new PublicationFactory(new BookGUIInputStrategy(), new ArticleGUIInputStrategy(),
@@ -63,10 +50,7 @@ public class GuiBibManager {
 		bibliography = Bibliography.getInstance();
 	}
 
-	/**
-	 * This method sets up the main GUI creating a JFrame, attaching a Jpanel to the
-	 * frame and attaching buttons to the Jpanel sets the frame visible
-	 */
+	
 	private void mainGUI() {
 		mainFrame = new JFrame("Bibliography Manager");
 		mainFrame.setSize(600, 600);
@@ -111,11 +95,7 @@ public class GuiBibManager {
 		mainFrame.setVisible(true);
 	}
 
-	/**
-	 * displays a jpanel requesting input of a citekey, with an ok - cancel
-	 * Joption_pane. if ok is selected a biblioghraphy entry with the input citekey
-	 * is removed from the bibliographies tree map
-	 */
+	
 	private void deleteEntryGUI() {
 		JTextField citeKey = new JTextField(5);
 		JPanel myPanel = new JPanel();
@@ -129,14 +109,7 @@ public class GuiBibManager {
 		}
 	}
 
-	/**
-	 * creates a bibItem called publication displays a JOptionPane asking user to
-	 * select the a publication type to add options - "Book", "Article", "Tech
-	 * Report" if a publication Type is chosen, sets publication to the returned
-	 * value of publicationFactory.createBibItem(), which is passed the chosen
-	 * publication type as a parameter. if the returned publication is not null, it
-	 * is added to the bibliogrpahys TreeMap, using its citekey as a key
-	 */
+	
 	private void publicationChoiceGUI() {
 		BibItem publication;
 		String[] choices = { "Book", "Article", "Tech Report" };
@@ -148,11 +121,7 @@ public class GuiBibManager {
 		}
 	}
 
-	/**
-	 * displays a JOptionPane asking user to select the style /type of bibliography
-	 * they would like printed options - Harvard / bibTex will call
-	 * biblioPrintLocationGUI passing the chosen option if the optionis not null
-	 */
+	
 	private void bibliographyTypeGUI() {
 		String[] choices = { "Harvard", "BibTex" };
 		String picked = (String) JOptionPane.showInputDialog(mainFrame, "What kind of Bibliograph do you want?",
@@ -162,15 +131,7 @@ public class GuiBibManager {
 		}
 	}
 
-	/**
-	 * displays a JOptionPane asking user where they would like the bibliogprahy
-	 * printed options - GUI / Console if the option choice is not null, it will
-	 * either call viewBibliographyConsole or viewBibliographyGUI based on the
-	 * chosen option. it will pass biblioType string to these methods
-	 * 
-	 * @param biblioType string representing the type of bibliography style to be
-	 *                   printed - Harvard / BibTex
-	 */
+	
 	private void biblioPrintLocationGUI(String biblioType) {
 		String[] choices = { "GUI", "Console" };
 		String picked = (String) JOptionPane.showInputDialog(mainFrame,
@@ -185,14 +146,7 @@ public class GuiBibManager {
 		}
 	}
 
-	/**
-	 * method will loop over bibliography's bibitems and print them to console.
-	 * print style will be based on the string input, using either toString or
-	 * toBibTexString bibItem methods
-	 * 
-	 * @param biblioType a string representing the bibliography display type -
-	 *                   choices Harvard or BibTex
-	 */
+	
 	private void viewBibliographyConsole(String biblioType) {
 		List<BibItem> bibItemByYear = bibliography.getSortedBibliography();
 		if (biblioType.equals("Harvard")) {
@@ -206,18 +160,7 @@ public class GuiBibManager {
 		}
 	}
 
-	/**
-	 * creates a JDialog to view the bibliography. method will loop over
-	 * bibliography's bibitems and add them to the JDialog's panel with an empty
-	 * line between entries if the biblioType is not "Harvard" each bibTex item in
-	 * the loop will be edited, replacing blank lines with <br>
-	 * and surrounding each bibItem with html tags an ok button is added that sets
-	 * the dialog invisible when selected
-	 * 
-	 * @param biblioType string representing the bibliography display type - choices
-	 *                   Harvard or BibTex
-	 * @return the create JDialog is returned
-	 */
+	
 	private JDialog viewBibliographyGUI(String biblioType) {
 		final JDialog biblioDialog = new JDialog(mainFrame, "Bibliography Viewer", Dialog.ModalityType.DOCUMENT_MODAL);
 		biblioDialog.setBounds(132, 132, 600, 600);
@@ -254,11 +197,7 @@ public class GuiBibManager {
 		return biblioDialog;
 	}
 
-	/**
-	 * produces a JPanel that accepts input if the user selects ok, the saveToFile
-	 * method of the bibliography instance will save the file with the entered input
-	 * as a file name
-	 */
+	
 	private void saveFileGUI() {
 		JTextField filenameInput = new JTextField(5);
 		JPanel myPanel = new JPanel();
@@ -270,17 +209,9 @@ public class GuiBibManager {
 		}
 	}
 
-	/**
-	 * This class implements the actions listener interface
-	 */
+	
 	private class ButtonClickListener implements ActionListener {
-		/**
-		 * this method saves the action event's action command to a string an if else
-		 * block then execute the relevant methods and status label updates based on the
-		 * command
-		 * 
-		 * @param e this is an action event
-		 */
+		
 		public void actionPerformed(ActionEvent e) {
 			String command = e.getActionCommand();
 			if (command.equals("load")) {
